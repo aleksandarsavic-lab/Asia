@@ -7,7 +7,7 @@
     <style>
         body {
             font-family: 'Noto Sans JP', sans-serif;
-            background-image: url('https://cdn.pixabay.com/photo/2017/08/30/01/25/asia-2694932_960_720.jpg'); /* Mapa Azije */
+            background-image: url('https://cdn.pixabay.com/photo/2017/08/30/01/25/asia-2694932_960_720.jpg');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -28,7 +28,7 @@
         }
 
         h1 {
-            font-size: 70px;
+            font-size: 50px;
             margin-top: 20px;
             color: #ffcc00;
             text-transform: uppercase;
@@ -36,7 +36,7 @@
         }
 
         .countdown {
-            font-size: 50px;
+            font-size: 30px;
             font-weight: bold;
             color: #ffcc00;
             letter-spacing: 3px;
@@ -47,26 +47,28 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 30px;
+            font-size: 20px;
             margin-top: 40px;
+            flex-wrap: wrap;
         }
 
         .timer div {
-            margin: 0 15px;
+            margin: 10px;
             background-color: rgba(0, 0, 0, 0.6);
             padding: 20px 30px;
             border-radius: 10px;
+            width: 100px;
         }
 
         .timer div span {
             display: block;
-            font-size: 50px;
+            font-size: 30px;
             font-weight: bold;
             color: #ffcc00;
         }
 
         .timer div p {
-            font-size: 20px;
+            font-size: 15px;
             color: #fff;
         }
 
@@ -79,6 +81,61 @@
             text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
         }
 
+        /* Media Queries for Mobile Responsiveness */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 40px;
+            }
+
+            .countdown {
+                font-size: 25px;
+            }
+
+            .timer {
+                font-size: 18px;
+            }
+
+            .timer div {
+                width: 80px;
+                margin: 8px;
+                padding: 15px;
+            }
+
+            .timer div span {
+                font-size: 24px;
+            }
+
+            .timer div p {
+                font-size: 12px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 30px;
+            }
+
+            .countdown {
+                font-size: 20px;
+            }
+
+            .timer {
+                font-size: 16px;
+            }
+
+            .timer div {
+                width: 70px;
+                padding: 12px;
+            }
+
+            .timer div span {
+                font-size: 20px;
+            }
+
+            .timer div p {
+                font-size: 10px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -116,7 +173,6 @@
     </div>
 
     <script>
-        // Datum putovanja: 11. novembar 2025. 13:30
         const travelDate = new Date('November 11, 2025 13:30:00 GMT+0100');
 
         function updateCountdown() {
@@ -141,7 +197,6 @@
             document.getElementById("milliseconds").innerHTML = milliseconds < 10 ? '0' + milliseconds : milliseconds;
         }
 
-        // Ažurira svakih 10ms
         setInterval(updateCountdown, 10);
     </script>
 
