@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASIA 2025 - Odbrojavanje</title>
+    <style>
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-image: url('https://cdn.pixabay.com/photo/2017/08/30/01/25/asia-2694932_960_720.jpg'); /* Mapa Azije */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+            text-align: center;
+            padding: 0;
+            margin: 0;
+            height: 100vh;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100%;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+        }
+
+        h1 {
+            font-size: 70px;
+            margin-top: 20px;
+            color: #ffcc00;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        .countdown {
+            font-size: 50px;
+            font-weight: bold;
+            color: #ffcc00;
+            letter-spacing: 3px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+        }
+
+        .timer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+            margin-top: 40px;
+        }
+
+        .timer div {
+            margin: 0 15px;
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 20px 30px;
+            border-radius: 10px;
+        }
+
+        .timer div span {
+            display: block;
+            font-size: 50px;
+            font-weight: bold;
+            color: #ffcc00;
+        }
+
+        .timer div p {
+            font-size: 20px;
+            color: #fff;
+        }
+
+        .footer {
+            position: absolute;
+            bottom: 20px;
+            width: 100%;
+            font-size: 18px;
+            color: white;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>ASIA 2025</h1>
+        <p class="countdown">Time remaining until your flight:</p>
+        
+        <div id="timer" class="timer">
+            <div>
+                <span id="days">00</span>
+                <p>DAYS</p>
+            </div>
+            <div>
+                <span id="hours">00</span>
+                <p>HOURS</p>
+            </div>
+            <div>
+                <span id="minutes">00</span>
+                <p>MINUTES</p>
+            </div>
+            <div>
+                <span id="seconds">00</span>
+                <p>SECONDS</p>
+            </div>
+            <div>
+                <span id="milliseconds">00</span>
+                <p>MILLISECONDS</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>by Handsome KA</p>
+    </div>
+
+    <script>
+        // Datum putovanja: 11. novembar 2025. 13:30
+        const travelDate = new Date('November 11, 2025 13:30:00 GMT+0100');
+
+        function updateCountdown() {
+            const now = new Date();
+            const timeRemaining = travelDate - now;
+
+            if (timeRemaining <= 0) {
+                document.getElementById("timer").innerHTML = "<p>Safe travels!</p>";
+                return;
+            }
+
+            const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+            const milliseconds = Math.floor((timeRemaining % 1000) / 10);
+
+            document.getElementById("days").innerHTML = days < 10 ? '0' + days : days;
+            document.getElementById("hours").innerHTML = hours < 10 ? '0' + hours : hours;
+            document.getElementById("minutes").innerHTML = minutes < 10 ? '0' + minutes : minutes;
+            document.getElementById("seconds").innerHTML = seconds < 10 ? '0' + seconds : seconds;
+            document.getElementById("milliseconds").innerHTML = milliseconds < 10 ? '0' + milliseconds : milliseconds;
+        }
+
+        // Ažurira svakih 10ms
+        setInterval(updateCountdown, 10);
+    </script>
+
+</body>
+</html>
